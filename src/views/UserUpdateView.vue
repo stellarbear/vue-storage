@@ -20,6 +20,10 @@ const [onSubmit, {loading}] = useOperation(async (values: any) => {
     router.push(`/users/${user.id}`);
   }
 });
+
+if (!item.value) {
+  router.push('/users');
+}
 </script>
 
 <template>

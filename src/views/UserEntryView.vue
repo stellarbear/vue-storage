@@ -1,14 +1,19 @@
 <script setup lang="ts">
 import {Database} from "@/db";
 import {computed} from "vue";
-import {useRoute} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 
 const db = Database.inject();
 const users = db.get("user");
 
 const route = useRoute();
+const router = useRouter();
 
 const item = computed(() => users.getById(route.params.id));
+
+if (!item.value) {
+  router.push('/users');
+}
 </script>
 
 <template>
